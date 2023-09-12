@@ -66,32 +66,31 @@ namespace Task.Tests
 
             while (numbers != null)
             {
-                // Act: 
+                // Act
                 double[] expectedRoots = GetExpectedRoots(linesRead);
                 double[] actualRoots = solver.SolveEquation(numbers[0], numbers[1], numbers[2]);
 
-                // Assert: 
+                // Assert
                 Assert.Equal(expectedRoots.Length, actualRoots.Length);
                 for (int i = 0; i < expectedRoots.Length; i++)
                 {
-                    Assert.Equal(expectedRoots[i], actualRoots[i], 1E-1);
+                    Assert.Equal(expectedRoots[i], actualRoots[i], 1E-6);
                 }
 
                 numbers = fileInput.GetNumbers();
                 linesRead++;
             }
 
-            // Assert: Check that all lines were read
+            // Assert
             Assert.Equal(5, linesRead);
         }
 
         private double[] GetExpectedRoots(int index)
         {
-            // Define the expected roots for each line based on the index
             switch (index)
             {
                 case 0: return new double[] { };
-                case 1: return new double[] { -3.0, 0.5 };
+                case 1: return new double[] { -3.070027, 0.570027 };
                 case 2: return new double[] { };
                 case 3: return new double[] { -3.732051, -0.267949 };
                 case 4: return new double[] { -1.0 };
